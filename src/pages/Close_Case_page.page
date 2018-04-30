@@ -1,0 +1,5 @@
+<apex:page standardController="case">
+ <apex:form >
+ Product: <apex:inputField value="{!case.productid}"/>
+ </apex:form>
+</apex:page>

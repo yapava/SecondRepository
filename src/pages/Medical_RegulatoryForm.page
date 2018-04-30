@@ -1,0 +1,94 @@
+<apex:page id="pg" StandardController="Case" extensions="Medical_RegulatoryFormController"  title="Regulatory Form" >
+ <apex:includeScript value="/support/console/36.0/integration.js"/>
+<script>
+window.alert('tttttttsss');
+window.alert(sforce.console.isInConsole());
+window.alert(sforce.console.getEnclosingPrimaryTabId());
+window.alert(sforce.console.getEnclosingPrimaryTabId());
+
+function getEncloseTabId() {
+                sforce.console.getEnclosingTabId();
+            }
+            
+            function enableClosingTab() { 
+                
+                sforce.console.disableTabClose(false,getEncloseTabId());
+            } 
+            
+            function enableCloseTab(cmd) {
+                
+                if (cmd=='submit' || cmd== 'cancel'){
+                    enableClosingTab();        
+                }   
+                return false;   
+            }
+            
+function changeTitleOnSubmit() {
+window.alert('tttttttyy');
+
+                     console.log('pavan heloo');
+                   <!-- window.location.href = '/{!objNewCase.Id}'; -->
+                <!-- window.location.href = '/{!objNewCase.Id}?isdtp=vw'; -->
+                window.location.href = '/{!objNewCase.Id}/e?retURL=%2F{!objNewCase.Id}';
+                    sforce.console.setTabTitle('{!objNewCase.CaseNumber}');
+                }
+                
+                
+                
+                 function SetTabTitleForRegulatoryFormPage() {
+                //Set the current tab's title
+                sforce.console.setTabTitle('Regulatory Form');
+            } 
+                
+                window.onload = SetTabTitleForRegulatoryFormPage();
+                </script>
+<apex:form >
+<apex:outputPanel id="frmRQA">
+<apex:actionFunction name="saveMyForm" status="Status1" action="{!saveForm}" rerender="frmRQA"  oncomplete="changeTitleOnSubmit();">
+            </apex:actionFunction>
+            
+             <apex:commandButton onclick=" saveMyForm(); enableCloseTab('submit'); return false;"  value="Submit" id="submit" />
+             
+             <apex:pageBlock id="pbForm">
+              <apex:pageBlockSection collapsible="false" title="Question 1 - Awareness Date:">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value="When did the first Stryker employee become aware of the event or issue?" />
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:inputField styleClass="txtAnswer101" taborderhint="101" value="{!regQuestionAnswer1.Answer_1__c}"> 
+                        </apex:inputField>            
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                
+                
+                
+                <!-- QUESTION 2  -->
+                <apex:pageBlockSection collapsible="false" title="Question 2 - Send to Trackwise?:" >
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value="Do the details of this record need to be escalated to Trackwise?" />
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:inputField styleClass="txtAnswer102" taborderhint="102"  value="{!regQuestionAnswer1.Formal_complaint__c}" >
+                        </apex:inputField>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                
+                
+                <!-- QUESTION 3 -->
+                <apex:pageBlockSection collapsible="false"  title="Question 3 - Adverse Consequences / Medical Delays: " >
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value="  Were there any adverse consequences or medical delays to a patient or user?" />
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:inputField styleClass="txtAnswer103" taborderhint="103" value="{!regQuestionAnswer1.Adverse_Consequences__c}" >
+                        </apex:inputField>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                </apex:pageBlock>
+            
+</apex:outputPanel>
+            </apex:form>
+</apex:page>

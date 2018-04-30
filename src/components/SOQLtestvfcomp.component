@@ -1,0 +1,7 @@
+<apex:component controller="SoqlTestInVFTemplate" access="global">
+<apex:attribute name="oppId" type="ID" assignTo="{!dealOpptyID}" description="OpportunityId"/>
+   <!-- <apex:repeat var="partner" value="{!channelPartnerList}">   
+            <apex:outputText value="{!partner.Channel_Partner__r.name}"/> <br></br>
+     </apex:repeat> -->
+     <apex:outputText value="Sample Test Please ignore"/> <br></br>
+</apex:component>

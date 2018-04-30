@@ -1,0 +1,6 @@
+<apex:component controller="casecontroller_ApprovalName" access="global">
+    <apex:attribute name="cid" assignTo="{!TaskIds}" type="String" description="Id of the task"/> 
+    <apex:dataTable value="{!ApprovalSteps}" style="text-align:center;" var="step">
+    <b><apex:column value="{!step.ActorID}" headerValue=""/></b>
+    </apex:dataTable>
+</apex:component>

@@ -1,0 +1,17 @@
+<apex:page controller="countryclasswather">
+<apex:form >
+<apex:pageBlock >
+
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Country Search</h1>
+  <!-- End Default Content REMOVE THIS -->
+  <apex:pageBlockSection >
+    Please Enter Name:- <apex:inputText title="Country"  value="{!cname}"/>
+    <apex:commandButton title="Search" value="Search" action="{!countrysearch}"/>
+  </apex:pageBlockSection>
+
+  </apex:pageBlock>
+  
+  {!allcities}
+  </apex:form>
+</apex:page>

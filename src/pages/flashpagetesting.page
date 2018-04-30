@@ -1,0 +1,6 @@
+<apex:page standardController="Account" id="pageidhere" cache="false">
+
+    <apex:flash width="100%" height="480"  src="{!$Resource.flashobject}" >
+    </apex:flash>
+
+</apex:page>
